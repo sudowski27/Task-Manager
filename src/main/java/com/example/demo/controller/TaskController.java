@@ -1,11 +1,16 @@
 package com.example.demo.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.model.Task;
 import com.example.demo.service.TaskService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// @CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*") // allow all hosts
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
