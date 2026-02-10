@@ -1,14 +1,72 @@
-import React from 'react'
-import assets from '../assets/assets'
+import { useState, useEffect } from 'react';
+import React from 'react';
+import assets from '../assets/assets';
 
-const Navbar = ({theme, setTheme}) => {
+type NavbarProps = {
+  onToggle: () => void;
+};
+
+const Navbar = ({ onToggle }: NavbarProps) => {
   return (
     <div className='flex justify-between items-center px-4 
     sm:px-12 lg:px-24 xl:px-40 py-4 sticky top-0 z-20
     backdrop-blur-x1 font-medium bg-white/50 
     dark:bg-gray-900/70'>
+    <span className="text-lg font-semibold">
+    MyTaskManager
+    </span>
 
-        <img src={theme === 'dark' ? assets.react: assets.react}/>
+    <button
+    className="
+    px-4 py-2 rounded-lg
+    bg-blue-600 text-white
+    hover:bg-blue-700
+    transition
+    "
+    >
+    Add new task
+    </button>
+    <button
+    className="
+    px-4 py-2 rounded-lg
+    bg-blue-600 text-white
+    hover:bg-blue-700
+    transition
+    "
+    >
+    View my tasks
+    </button>
+    <button
+    className="
+    px-4 py-2 rounded-lg
+    bg-blue-600 text-white
+    hover:bg-blue-700
+    transition
+    "
+    >
+    Remove task
+    </button>
+    <button
+    className="
+    px-4 py-2 rounded-lg
+    bg-blue-600 text-white
+    hover:bg-blue-700
+    transition
+    "
+    >
+    Statistics
+    </button>
+    <button
+    className="
+    px-4 py-2 rounded-lg
+    bg-blue-600 text-white
+    hover:bg-blue-700
+    transition
+    "
+    onClick={onToggle}
+    >
+    Change theme
+    </button>
     </div>
   )
 }

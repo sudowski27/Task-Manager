@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
+import { React, useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
+import { darkTheme, lightTheme } from './theme/themes'
+import { applyTheme } from './theme/applyTheme'
 
 const App = () => {
-    const [theme, setTheme] = useState('light')
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    applyTheme(isDark ? darkTheme : lightTheme);
+  }, [isDark]);
+
   return (
-    <div className='dark:bg-black relative'>
-      <Navbar theme={theme} setTheme={setTheme}/>
+    <div className='Navigation'>
+      <Navbar onToggle={() => {setIsDark(v => !v); console.log("click");}}/>
     </div>
   )
 }
