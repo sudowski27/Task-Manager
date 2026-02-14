@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import React from 'react';
-import assets from '../assets/assets';
+import { useNavigate } from 'react-router-dom';
 
 type NavbarProps = {
   onToggle: () => void;
 };
 
 const Navbar = ({ onToggle }: NavbarProps) => {
+  const navigate = useNavigate()
+
   return (
     <div className='flex justify-between items-center px-4 
     sm:px-12 lg:px-24 xl:px-40 py-4 sticky top-0 z-20
@@ -23,6 +23,7 @@ const Navbar = ({ onToggle }: NavbarProps) => {
     hover:bg-blue-700
     transition
     "
+    onClick={() => navigate("/add_new_task")}
     >
     Add new task
     </button>
