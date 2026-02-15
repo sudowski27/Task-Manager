@@ -13,6 +13,41 @@ const AddNewTask = ({ isDark, setIsDark }: AddNewTaskProps) => {
   const [priority, setPriority] = useState("low");
   const navigate = useNavigate()
 
+  const handleAddTask = async () => {
+    const taskData = {
+    name: taskName,
+    description: taskDescription,
+    date: taskDate,
+    priority: priority,
+    };
+
+    try {
+    const response = await fetch("http://localhost:8080/tasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(taskData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to add task");
+    }
+
+    const result = await response.json();
+    console.log("Task added:", result);
+
+    // Optional: clear form
+    setTaskName("");
+    setTaskDescription("");
+    setTaskDate("");
+    setPriority("low");
+
+    } catch (error) {
+    console.error("Error:", error);
+    }
+  };
+
   return (
     <div>
         <button
@@ -184,6 +219,7 @@ const AddNewTask = ({ isDark, setIsDark }: AddNewTaskProps) => {
               style={{
                 color: "var(--text-color)"
            }}
+              onClick={handleAddTask}
             >
               Add Task
             </button>

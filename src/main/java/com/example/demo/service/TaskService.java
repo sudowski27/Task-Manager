@@ -34,7 +34,8 @@ public class TaskService {
                 .map(task -> {
                     task.setTitle(updatedTask.getTitle());
                     task.setDescription(updatedTask.getDescription());
-                    task.setCompleted(updatedTask.isCompleted());
+                    task.setDate(updatedTask.getDate());
+                    task.setPriority(updatedTask.getPriority());
                     return repository.save(task);
                 })
                 .orElseThrow(() -> new RuntimeException("Task not found"));
