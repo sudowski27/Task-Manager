@@ -16,7 +16,7 @@ const App = () => {
   return (
     <Routes>
         <Route path="/" element={<Home isDark={isDark} setIsDark={setIsDark}/>}/>
-        <Route path="/add_new_task" element={<AddNewTask />} />
+        <Route path="/add_new_task" element={<AddNewTask isDark={isDark} setIsDark={setIsDark}/>} />
     </Routes>
   )
 }

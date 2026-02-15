@@ -1,54 +1,194 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
-const AddNewTask = () => {
+type AddNewTaskProps = {
+  isDark: boolean;
+  setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const AddNewTask = ({ isDark, setIsDark }: AddNewTaskProps) => {
   const [taskName, setTaskName] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
+  const [taskDate, setTaskDate] = useState("");
+  const [priority, setPriority] = useState("low");
+  const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div
-        className="
-          w-80
-          bg-green-200
-          rounded-xl
-          shadow-lg
-          p-6
-          flex flex-col
-          gap-4
-        "
-      >
-        <h1 className="text-xl font-semibold text-green-900 text-center">
-          Add New Task
-        </h1>
-
-        <input
-          type="text"
-          placeholder="Enter task name..."
-          value={taskName}
-          onChange={(e) => setTaskName(e.target.value)}
-          className="
-            w-full
-            px-3 py-2
-            rounded-md
-            border border-green-400
-            focus:outline-none
-            focus:ring-2
-            focus:ring-green-500
-          "
-        />
-
+    <div>
         <button
           className="
-            bg-green-600
-            text-white
             py-2
+            px-4
             rounded-md
-            hover:bg-green-700
             transition
           "
+          style={{
+            backgroundColor: "var(--button-bg)",
+            color: "var(--text-color)"
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--button-hover)")}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--button-bg)")}
+          onClick={() => setIsDark(v => !v)}
         >
-          Add Task
+          Change theme
         </button>
-      </div>
+        <button
+          className="
+            bg-blue-600
+            text-white
+            py-2
+            px-4
+            rounded-md
+            hover:bg-gray-800
+            transition
+          "
+          style={{
+            backgroundColor: "var(--button-bg)",
+            color: "var(--text-color)"
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--button-hover)")}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--button-bg)")}
+          onClick={() => navigate("/")}
+        >
+          Back to Home
+        </button>
+        <div className="min-h-screen flex items-center justify-center">
+          <div
+            className="
+              w-80
+              bg-green-200
+              rounded-xl
+              shadow-lg
+              p-6
+              flex flex-col
+              gap-4
+            "
+          >
+            <h1 className="text-xl font-semibold text-green-900 text-center">
+              Add New Task
+            </h1>
+
+            <input
+              type="text"
+              placeholder="Enter task name..."
+              value={taskName}
+              onChange={(e) => setTaskName(e.target.value)}
+              className="
+                w-full
+                px-3 py-2
+                rounded-md
+                border border-green-400
+                focus:outline-none
+                focus:ring-2
+                focus:ring-green-500
+                text-black
+              "
+            />
+
+            <input
+              type="text"
+              placeholder="Enter task description..."
+              value={taskDescription}
+              onChange={(e) => setTaskDescription(e.target.value)}
+              className="
+                w-full
+                px-3 py-2
+                rounded-md
+                border border-green-400
+                focus:outline-none
+                focus:ring-2
+                focus:ring-green-500
+                text-black
+              "
+            />
+
+            <input
+                type="date"
+                value={taskDate}
+                onChange={(e) => setTaskDate(e.target.value)}
+                className="
+                w-full
+                px-3 py-2
+                rounded-md
+                border border-green-400
+                focus:outline-none
+                focus:ring-2
+                focus:ring-green-500
+                text-black
+                "
+            />
+            <p className="mb-2 text-sm text-gray-600">Priority:</p>
+
+            <div className="flex items-center gap-6">
+                <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                        type="radio"
+                        name="priority"
+                        value="low"
+                        checked={priority === "low"}
+                        onChange={(e) => setPriority(e.target.value)}
+                        className="
+                          w-4 h-4
+                          text-green-500
+                          border-green-400
+                          focus:ring-green-500
+                        "
+                    />
+                    <span className="text-black">Low</span>
+                </label>
+
+                <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                        type="radio"
+                        name="priority"
+                        value="medium"
+                        checked={priority === "medium"}
+                        onChange={(e) => setPriority(e.target.value)}
+                        className="
+                          w-4 h-4
+                          text-green-500
+                          border-green-400
+                          focus:ring-green-500
+                        "
+                    />
+                    <span className="text-black">Medium</span>
+                </label>
+
+                <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                        type="radio"
+                        name="priority"
+                        value="high"
+                        checked={priority === "high"}
+                        onChange={(e) => setPriority(e.target.value)}
+                        className="
+                          w-4 h-4
+                          text-green-500
+                          border-green-400
+                          focus:ring-green-500
+                        "
+                    />
+                    <span className="text-black">High</span>
+                </label>
+            </div>
+
+            <button
+              className="
+                bg-green-600
+                text-white
+                py-2
+                rounded-md
+                hover:bg-green-700
+                transition
+              "
+              style={{
+                color: "var(--text-color)"
+           }}
+            >
+              Add Task
+            </button>
+          </div>
+        </div>
     </div>
   );
 };

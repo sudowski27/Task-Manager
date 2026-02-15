@@ -5,4 +5,6 @@ export const applyTheme = (theme:Theme) => {
 
     root.style.setProperty("--bg-color", theme.background);
     root.style.setProperty("--text-color", theme.text);
+    root.style.setProperty("--button-bg", theme.buttonBackground);
+    root.style.setProperty("--button-hover", theme.buttonHover);
 };
