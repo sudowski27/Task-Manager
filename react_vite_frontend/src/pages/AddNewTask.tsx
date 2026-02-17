@@ -15,7 +15,7 @@ const AddNewTask = ({ isDark, setIsDark }: AddNewTaskProps) => {
 
   const handleAddTask = async () => {
     const taskData = {
-    name: taskName,
+    title: taskName,
     description: taskDescription,
     date: taskDate,
     priority: priority,
@@ -37,7 +37,6 @@ const AddNewTask = ({ isDark, setIsDark }: AddNewTaskProps) => {
     const result = await response.json();
     console.log("Task added:", result);
 
-    // Optional: clear form
     setTaskName("");
     setTaskDescription("");
     setTaskDate("");
