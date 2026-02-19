@@ -7,6 +7,12 @@ type AddNewTaskProps = {
 };
 
 const AddNewTask = ({ isDark, setIsDark }: AddNewTaskProps) => {
+  const [message, setMessage] = useState<string | null>(null); // TODO remove
+  const [messageType, setMessageType] = useState<"success" | "error" | null>(null);  // TODO remove
+  const [notification, setNotification] = useState<{
+  message: string;
+  type: "success" | "error";
+} | null>(null);
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [taskDate, setTaskDate] = useState("");
@@ -34,17 +40,29 @@ const AddNewTask = ({ isDark, setIsDark }: AddNewTaskProps) => {
       throw new Error("Failed to add task");
     }
 
-    const result = await response.json();
-    console.log("Task added:", result);
+    await response.json();
 
     setTaskName("");
     setTaskDescription("");
     setTaskDate("");
     setPriority("low");
 
+    setMessage("Task added succesfully!")  // TODO remove
+    setMessageType("success")  // TODO remove
+    setNotification({
+    message: "Task added successfully!",
+    type: "success",
+  });
+
     } catch (error) {
-    console.error("Error:", error);
+    setMessage("Error while adding task.")
+    setMessageType("error")
     }
+
+    setTimeout(() => {
+        setMessage(null);
+        setMessageType(null);
+    }, 3000);
   };
 
   return (
@@ -224,6 +242,18 @@ const AddNewTask = ({ isDark, setIsDark }: AddNewTaskProps) => {
             </button>
           </div>
         </div>
+        {message && (
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
+                <div
+                    className={`
+                                px-6 py-4 rounded-lg shadow-lg text-white
+                                ${messageType === "success" ? "bg-green-600" : "bg-red-600"}
+                              `}
+                >
+                {message}
+                </div>
+            </div>
+        )}
     </div>
   );
 };
