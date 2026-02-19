@@ -7,12 +7,10 @@ type AddNewTaskProps = {
 };
 
 const AddNewTask = ({ isDark, setIsDark }: AddNewTaskProps) => {
-  const [message, setMessage] = useState<string | null>(null); // TODO remove
-  const [messageType, setMessageType] = useState<"success" | "error" | null>(null);  // TODO remove
   const [notification, setNotification] = useState<{
-  message: string;
-  type: "success" | "error";
-} | null>(null);
+    message: string;
+    type: "success" | "error";
+    } | null>(null);
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [taskDate, setTaskDate] = useState("");
@@ -47,21 +45,21 @@ const AddNewTask = ({ isDark, setIsDark }: AddNewTaskProps) => {
     setTaskDate("");
     setPriority("low");
 
-    setMessage("Task added succesfully!")  // TODO remove
-    setMessageType("success")  // TODO remove
     setNotification({
-    message: "Task added successfully!",
-    type: "success",
-  });
+        message: "Task added successfully!",
+        type: "success",
+    });
 
     } catch (error) {
-    setMessage("Error while adding task.")
-    setMessageType("error")
+
+    setNotification({
+        message: "Error while adding task",
+        type: "errr",
+    });
     }
 
     setTimeout(() => {
-        setMessage(null);
-        setMessageType(null);
+        setNotification(null);
     }, 3000);
   };
 
@@ -242,18 +240,37 @@ const AddNewTask = ({ isDark, setIsDark }: AddNewTaskProps) => {
             </button>
           </div>
         </div>
-        {message && (
-            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
-                <div
-                    className={`
-                                px-6 py-4 rounded-lg shadow-lg text-white
-                                ${messageType === "success" ? "bg-green-600" : "bg-red-600"}
-                              `}
-                >
-                {message}
-                </div>
-            </div>
-        )}
+        {notification && (
+  <div className="fixed top-6 right-6 z-50">
+    <div
+      className={`
+        min-w-[250px]
+        px-4 py-3
+        rounded-lg
+        shadow-lg
+        text-white
+        transform transition-all duration-300
+        animate-slide-in
+        ${
+          notification.type === "success"
+            ? "bg-green-600"
+            : "bg-red-600"
+        }
+      `}
+    >
+      <div className="flex justify-between items-center gap-4">
+        <span>{notification.message}</span>
+        <button
+          onClick={() => setNotification(null)}
+          className="text-white font-bold"
+        >
+          ✕
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
