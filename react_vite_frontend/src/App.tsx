@@ -5,6 +5,7 @@ import { applyTheme } from './theme/applyTheme'
 
 import Home from './pages/Home'
 import AddNewTask from './pages/AddNewTask'
+import TasksPage from './pages/ViewMyTasks'
 
 const App = () => {
   const [isDark, setIsDark] = useState(false);
@@ -17,6 +18,7 @@ const App = () => {
     <Routes>
         <Route path="/" element={<Home isDark={isDark} setIsDark={setIsDark}/>}/>
         <Route path="/add_new_task" element={<AddNewTask isDark={isDark} setIsDark={setIsDark}/>} />
+        <Route path="/view_my_tasks" element={<TasksPage/>} />
     </Routes>
   )
 }
