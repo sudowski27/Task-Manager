@@ -34,6 +34,7 @@ const Navbar = ({ onToggle }: NavbarProps) => {
     hover:bg-blue-700
     transition
     "
+    onClick={() => navigate("/view_my_tasks")}
     >
     View my tasks
     </button>
