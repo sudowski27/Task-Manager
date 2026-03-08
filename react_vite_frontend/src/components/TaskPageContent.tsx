@@ -30,15 +30,6 @@ export default function TaskPageContent() {
                             <div className="text-[8px] text-ellipsis text-left">DESCRIPTION</div>
                         </div>
                     <div className="overflow-y-scroll size-100">
-                        {/*
-                           <div> ECHO</div>
-                           <div className="size-14 flex-none ...">01</div>
-                        */}
-                        <div className="w-97 h-10 bg-green-200 rounded-full border border-green-700 border-dashed divide-x-3 divide-dotted divide-green-800 grid grid-cols-3">
-                            <div className="text-[12px] underline text-center">1</div>
-                            <div className="text-[8px] text-center">Learn React</div>
-                            <div className="text-[8px] text-ellipsis text-left">Practice hooks and component patterns</div>
-                        </div>
                         {renderedTasks}
                     </div>
                 </div>
