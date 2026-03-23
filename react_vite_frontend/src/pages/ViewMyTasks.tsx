@@ -1,7 +1,12 @@
 import { useState } from "react";
 import TaskPageContent from "../components/TaskPageContent";
 
-export default function TasksPage() {
+type ViewMyTasksProps = {
+  isDark: boolean;
+  setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export default function TasksPage({ isDark, setIsDark }: ViewMyTasksProps) {
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -22,7 +27,7 @@ export default function TasksPage() {
 
     return (
         <div className="TaskPageContent">
-            <TaskPageContent/>
+            <TaskPageContent isDark={isDark} setIsDark={setIsDark}/>
         </div>
     );
 };

@@ -1,8 +1,14 @@
 import TaskPageGetTaskList from "./TaskPageGetTaskList";
 import TaskPageRenderTasks from "./TaskPageRenderTasks"
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
-export default function TaskPageContent() {
+type TaskPageContentProps = {
+  isDark: boolean;
+  setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export default function TaskPageContent({ isDark, setIsDark }: TaskPageContentProps) {
 
     const url = 'http://localhost:8080/tasks';
     const response_data = TaskPageGetTaskList(url);
@@ -19,11 +25,25 @@ export default function TaskPageContent() {
             setRenderedTasks(TaskPageRenderTasks(data));
         });
     }, []);
+    const navigate = useNavigate()
 
     return (
         <div className="flex items-center justify-center h-screen">
             <div className="box-content size-400 p-4 bg-linear-to-r/srgb from-indigo-500 to-teal-400 flex items-center justify-center-safe">
                 <div>
+                    <div className="columns-2">
+                        <button className="pr-8 py-2 bg-green-300 rounded-xl hover:bg-sky-700 text-[12px] tracking-tighter text-center hover:bg-gray-800"
+                        id="back_to_home_button"
+                        onClick={() => navigate("/")}
+                        >
+                            Back to Home
+                        </button>
+                        <button className="pr-8 py-2 bg-green-300 rounded-xl hover:bg-sky-700 text-[12px] tracking-tighter text-center"
+                        id="change_theme_button"
+                        onClick={() => setIsDark(v => !v)}>
+                            Change theme
+                        </button>
+                    </div>
                     <div className="w-97 h-5 bg-green-700 rounded-full border border-green-700 border-dashed divide-x-3 divide-dotted divide-green-800 grid grid-cols-3">
                             <div className="text-[12px] underline text-center">ID</div>
                             <div className="text-[8px] text-center">TITLE</div>
