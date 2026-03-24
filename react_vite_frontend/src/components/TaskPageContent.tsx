@@ -29,7 +29,12 @@ export default function TaskPageContent({ isDark, setIsDark }: TaskPageContentPr
 
     return (
         <div className="flex items-center justify-center h-screen">
-            <div className="box-content size-400 p-4 bg-linear-to-r/srgb from-indigo-500 to-teal-400 flex items-center justify-center-safe">
+            <div className={`box-content size-400 p-4 flex items-center justify-center-safe ${
+                isDark
+                  ? "bg-gradient-to-r from-gray-900 to-gray-700"
+                  : "bg-gradient-to-r from-indigo-500 to-teal-400"
+                }`}
+            >
                 <div>
                     <div className="columns-2">
                         <button className="pr-8 py-2 bg-green-300 rounded-xl hover:bg-sky-700 text-[12px] tracking-tighter text-center hover:bg-gray-800"
