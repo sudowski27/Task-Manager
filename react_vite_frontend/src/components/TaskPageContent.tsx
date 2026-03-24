@@ -47,7 +47,11 @@ export default function TaskPageContent({ isDark, setIsDark }: TaskPageContentPr
                         >
                             Back to Home
                         </button>
-                        <button className="pr-8 py-2 bg-green-300 rounded-xl hover:bg-sky-700 text-[12px] tracking-tighter text-center"
+                        <button className={`pr-8 py-2 bg-green-300 rounded-xl hover:bg-sky-700 text-[12px] tracking-tighter text-center
+                            ${isDark
+                            ? "bg-green-900"
+                            : "bg-green-300"
+                            }`}
                         id="change_theme_button"
                         onClick={() => setIsDark(v => !v)}>
                             Change theme
