@@ -37,7 +37,11 @@ export default function TaskPageContent({ isDark, setIsDark }: TaskPageContentPr
             >
                 <div>
                     <div className="columns-2">
-                        <button className="pr-8 py-2 bg-green-300 rounded-xl hover:bg-sky-700 text-[12px] tracking-tighter text-center hover:bg-gray-800"
+                        <button className={`pr-8 py-2 bg-green-300 rounded-xl hover:bg-sky-700 text-[12px] tracking-tighter text-center hover:bg-gray-800
+                            ${isDark
+                              ? "bg-green-900"
+                              : "bg-green-300"
+                            }`}
                         id="back_to_home_button"
                         onClick={() => navigate("/")}
                         >
