@@ -22,9 +22,9 @@ export default function TaskPageContent({ isDark, setIsDark }: TaskPageContentPr
             console.log(data[3]);
             const response_data = data;
             setTasks(data);
-            setRenderedTasks(TaskPageRenderTasks(data));
+            setRenderedTasks(TaskPageRenderTasks(data, isDark));
         });
-    }, []);
+    }, [isDark]);
     const navigate = useNavigate()
 
     return (
@@ -47,7 +47,7 @@ export default function TaskPageContent({ isDark, setIsDark }: TaskPageContentPr
                         >
                             Back to Home
                         </button>
-                        <button className={`pr-8 py-2 bg-green-300 rounded-xl hover:bg-sky-700 text-[12px] tracking-tighter text-center
+                        <button className={`pr-8 py-2 bg-green-300 rounded-xl hover:bg-sky-700 text-[12px] tracking-tighter text-center 
                             ${isDark
                             ? "bg-green-900"
                             : "bg-green-300"
@@ -57,7 +57,11 @@ export default function TaskPageContent({ isDark, setIsDark }: TaskPageContentPr
                             Change theme
                         </button>
                     </div>
-                    <div className="w-97 h-5 bg-green-700 rounded-full border border-green-700 border-dashed divide-x-3 divide-dotted divide-green-800 grid grid-cols-3">
+                    <div className={`w-97 h-5 rounded-full border border-green-700 border-dashed divide-x-3 divide-dotted divide-green-800 grid grid-cols-3
+                        ${isDark
+                        ?  "bg-blue-500"
+                        :  "bg-green-700"}`}
+                    >
                             <div className="text-[12px] underline text-center">ID</div>
                             <div className="text-[8px] text-center">TITLE</div>
                             <div className="text-[8px] text-ellipsis text-left">DESCRIPTION</div>
