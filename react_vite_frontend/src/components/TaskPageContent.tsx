@@ -57,7 +57,7 @@ export default function TaskPageContent({ isDark, setIsDark }: TaskPageContentPr
                             Change theme
                         </button>
                     </div>
-                    <div className={`w-97 h-5 rounded-full border border-green-700 border-dashed divide-x-3 divide-dotted divide-green-800 grid grid-cols-3
+                    <div className={`w-97 h-5 rounded-full border border-green-700 border-dashed divide-x-3 divide-dotted divide-green-800 grid grid-cols-5
                         ${isDark
                         ?  "bg-blue-500"
                         :  "bg-green-700"}`}
@@ -65,6 +65,8 @@ export default function TaskPageContent({ isDark, setIsDark }: TaskPageContentPr
                             <div className="text-[12px] underline text-center">ID</div>
                             <div className="text-[8px] text-center">TITLE</div>
                             <div className="text-[8px] text-ellipsis text-left">DESCRIPTION</div>
+                            <div className="text-[8px] text-ellipsis text-left">DATE</div>
+                            <div className="text-[8px] text-ellipsis text-left">PRIORITY</div>
                         </div>
                     <div className="overflow-y-scroll size-100">
                         {renderedTasks}
