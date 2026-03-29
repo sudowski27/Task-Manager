@@ -45,6 +45,7 @@ const Navbar = ({ onToggle }: NavbarProps) => {
     hover:bg-blue-700
     transition
     "
+    onClick={() => navigate("/remove_task")}
     >
     Remove task
     </button>
