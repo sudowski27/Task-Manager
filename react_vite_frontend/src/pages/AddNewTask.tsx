@@ -54,7 +54,7 @@ const AddNewTask = ({ isDark, setIsDark }: AddNewTaskProps) => {
 
     setNotification({
         message: "Error while adding task",
-        type: "errr",
+        type: "error",
     });
     }
 
