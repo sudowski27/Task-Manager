@@ -56,6 +56,7 @@ const Navbar = ({ onToggle }: NavbarProps) => {
     hover:bg-blue-700
     transition
     "
+    onClick={() => navigate("/statistics")}
     >
     Statistics
     </button>

@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import AddNewTask from './pages/AddNewTask'
 import TasksPage from './pages/ViewMyTasks'
 import RemoveTask from './pages/RemoveTask'
+import Statistics from './pages/Statistics'
 
 const App = () => {
   const [isDark, setIsDark] = useState(false);
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/add_new_task" element={<AddNewTask isDark={isDark} setIsDark={setIsDark}/>} />
         <Route path="/view_my_tasks" element={<TasksPage isDark={isDark} setIsDark={setIsDark}/>} />
         <Route path="/remove_task" element={<RemoveTask isDark={isDark} setIsDark={setIsDark}/>} />
+        <Route path="/statistics" element={<Statistics isDark={isDark} setIsDark={setIsDark}/>} />
     </Routes>
   )
 }
