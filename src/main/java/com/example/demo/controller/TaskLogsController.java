@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.model.TaskLogs;
+import com.example.demo.model.MonthCount;
 import com.example.demo.service.TaskLogsService;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +46,7 @@ public class TaskLogsController {
     }
 
     @GetMapping("/month/{month}")
-    public int countTasksAddedInMonth(@PathVariable int month) {
+    public MonthCount countTasksAddedInMonth(@PathVariable int month) {
         return service.countTasksAddedInMonth(month);
     }
 }
