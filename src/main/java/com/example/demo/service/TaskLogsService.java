@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.TaskLogs;
+import com.example.demo.model.MonthCount;
 import com.example.demo.repository.TaskLogsRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.http.HttpStatus;
@@ -46,7 +47,10 @@ public class TaskLogsService {
         repository.deleteById(id);
     }
 
-    public int countTasksAddedInMonth(int month) {
-        return repository.countByMonth(month);
+    public MonthCount countTasksAddedInMonth(int month) {
+        MonthCount tempMonthCount = new MonthCount();
+        tempMonthCount.setMonth(month);
+        tempMonthCount.setCount(repository.countByMonth(month));
+        return tempMonthCount;
     }
 }
