@@ -8,6 +8,8 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import GetMonthCount from "./GetMonthCount";
+import {useEffect, useState} from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -49,7 +51,32 @@ export const data = {
   ],
 };
 
+type MonthCount = {
+    month: number;
+    count: number;
+};
+
 export default function BarUsagePlot() {
+    const [monthsCount, setMonthsCount] = useState<number[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const results: number[] = [];
+
+            for (let i = 1; i <= 12; i++) {
+                const url = `http://localhost:8080/task_logs/month/${i}`;
+                const data = await GetMonthCount(url);
+
+                results.push(data.count);
+            }
+
+            setMonthsCount(results);
+            console.log(results);
+        };
+
+        fetchData();
+    }, []);
+
     return (
         <Bar options={options} data={data}/>
     );
