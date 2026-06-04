@@ -4,5 +4,5 @@ export default async function TaskPageGetTaskList(url: string) {
     console.log(data);
     console.log(data[0]);
 
-    return count;
+    return data;
 };
