@@ -33,7 +33,6 @@ public class TaskService {
         return saved;
     }
 
-
     public Task updateTask(Long id, Task updatedTask) {
         return repository.findById(id)
                 .map(task -> {
