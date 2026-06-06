@@ -47,6 +47,13 @@ public class TaskLogsService {
         repository.deleteById(id);
     }
 
+    public void deleteTasklogByTaskId(Long taskId) {
+        if (!repository.existsByTaskId(taskId)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "TaskLog not found");
+        }
+        repository.deleteByTaskId(taskId);
+    }
+
     public MonthCount countTasksAddedInMonth(int month) {
         MonthCount tempMonthCount = new MonthCount();
         tempMonthCount.setMonth(month);
