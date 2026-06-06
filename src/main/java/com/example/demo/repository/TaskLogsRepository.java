@@ -12,9 +12,9 @@ public interface TaskLogsRepository extends JpaRepository<TaskLogs, Long> {
     @Query(value = "DELETE FROM task_logs WHERE task_id = :taskId", nativeQuery = true)
     void deleteByTaskId(@Param("taskId") Long taskId);
 
-    @Query(value = "SELECT EXISTS(SELECT 1 FROM task_logs WHERE task_id = :taskId)", nativeQuery = true)
-    boolean existsByTaskId(@Param("taskId") Long taskId);
+    @Query(value = "SELECT EXISTS(SELECT 1 FROM task_logs WHERE task_id = :task_id)", nativeQuery = true)
+    boolean existsByTaskId(@Param("task_id") Long task_id);
 
-    @Query(value = "SELECT id FROM task_logs WHERE task_id = :id", nativeQuery = true)
-    Long getByTaskId(@Param("task_id") Long id);
+    @Query(value = "SELECT id FROM task_logs WHERE task_id = :taskId", nativeQuery = true)
+    Long getIdByTaskId(@Param("taskId") Long taskId);
 }
