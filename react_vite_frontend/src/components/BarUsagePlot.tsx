@@ -20,27 +20,6 @@ ChartJS.register(
   Legend
 );
 
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top' as const,
-    },
-    title: {
-      display: true,
-      text: 'Number of Tasks Added Each Month',
-    },
-  },
-  scales: {
-    y: {
-      beginAtZero: true,
-      ticks: {
-        precision: 0,
-      },
-    },
-  },
-};
-
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 type MonthCount = {
@@ -60,6 +39,29 @@ export default function BarUsagePlot({ isDark, setIsDark }: BarUsagePlotProps) {
     ? 'rgba(220, 255, 250, 0.9)'
     : 'rgba(255, 99, 132, 0.5)';
 
+    const xTicksColor = isDark
+    ? '#ffffff'
+    : '#000000';
+
+    const xGridColor = isDark
+    ? '#ffffff'
+    : '#000000';
+
+    const xBorderColor = isDark
+    ? '#ffffff'
+    : '#000000';
+
+    const yTicksColor = isDark
+    ? '#ffffff'
+    : '#000000';
+
+    const yGridColor = isDark
+    ? '#ffffff'
+    : '#000000';
+
+    const yBorderColor = isDark
+    ? '#ffffff'
+    : '#000000';
     useEffect(() => {
         const fetchData = async () => {
             const results: number[] = [];
@@ -86,6 +88,45 @@ export default function BarUsagePlot({ isDark, setIsDark }: BarUsagePlotProps) {
           backgroundColor: barColor,
         },
       ],
+    };
+
+    const options = {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top' as const,
+        },
+        title: {
+          display: true,
+          text: 'Number of Tasks Added Each Month',
+        },
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: xTicksColor, // month labels
+          },
+          grid: {
+            color: xGridColor, // vertical grid lines
+          },
+          border: {
+            color: xBorderColor, // x-axis line
+          },
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+            precision: 0,
+            color: yTicksColor,
+          },
+          grid: {
+            color: yGridColor, // vertical grid lines
+          },
+          border: {
+            color: yBorderColor, // x-axis line
+          },
+        },
+      },
     };
 
     return (
