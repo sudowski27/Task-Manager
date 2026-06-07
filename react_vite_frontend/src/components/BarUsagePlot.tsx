@@ -20,7 +20,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+const options = {
   responsive: true,
   plugins: {
     legend: {
@@ -28,28 +28,20 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Chart.js Bar Chart',
+      text: 'Number of Tasks Added Each Month',
+    },
+  },
+  scales: {
+    y: {
+      beginAtZero: true,
+      ticks: {
+        precision: 0,
+      },
     },
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [120, 300, 450, 200, 800, 650, 400],
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: [500, 200, 300, 700, 100, 900, 600],
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 type MonthCount = {
     month: number;
@@ -71,11 +63,21 @@ export default function BarUsagePlot() {
             }
 
             setMonthsCount(results);
-            console.log(results);
         };
 
         fetchData();
     }, []);
+
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Task added',
+          data: monthsCount,
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+      ],
+    };
 
     return (
         <Bar options={options} data={data}/>
