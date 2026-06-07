@@ -48,8 +48,17 @@ type MonthCount = {
     count: number;
 };
 
-export default function BarUsagePlot() {
+type BarUsagePlotProps = {
+  isDark: boolean;
+  setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export default function BarUsagePlot({ isDark, setIsDark }: BarUsagePlotProps) {
     const [monthsCount, setMonthsCount] = useState<number[]>([]);
+
+    const barColor = isDark
+    ? 'rgba(220, 255, 250, 0.9)'
+    : 'rgba(255, 99, 132, 0.5)';
 
     useEffect(() => {
         const fetchData = async () => {
@@ -74,7 +83,7 @@ export default function BarUsagePlot() {
         {
           label: 'Task added',
           data: monthsCount,
-          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          backgroundColor: barColor,
         },
       ],
     };
