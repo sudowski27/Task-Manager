@@ -27,7 +27,7 @@ export default function Statistics({isDark, setIsDark}: StatisticsProps) {
             </button>
 
             <div className="fixed top-30 left-20 size-100">
-                <BarUsagePlot/>
+                <BarUsagePlot isDark={isDark} setIsDark={setIsDark}/>
             </div>
         </div>
     );
