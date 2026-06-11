@@ -35,5 +35,5 @@ A full-stack Task Manager application built with:
 ![add_new_task](markdown_images/add_new_task.png)
 ![add_new_task_dark_theme](markdown_images/add_new_task_dark_theme.png)
 ![task_list](markdown_images/task_list.png)
-![remove_task](markdown_images/remove_task)
-![statistics](markdown_images/statistics)
+![remove_task](markdown_images/remove_task.png)
+![statistics](markdown_images/statistics.png)
